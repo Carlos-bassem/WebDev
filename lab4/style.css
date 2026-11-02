@@ -1,0 +1,249 @@
+/* 1. Page layout and colors */
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #202b3c;
+    background-color: #eef1ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* 2. White card */
+.todo-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 11px;
+    box-shadow: 0 7px 22px rgba(32, 47, 75, 0.10);
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* 3. New-task input and Add button */
+.add-row {
+    display: flex;
+    gap: 7px;
+}
+
+#todo-input {
+    min-width: 0;
+    flex: 1;
+    height: 33px;
+    padding: 0 10px;
+    background: #fafbfe;
+    border: 1px solid #e4e8f0;
+    border-radius: 6px;
+    font-size: 12px;
+    outline-color: #3b82f6;
+}
+
+.add-button {
+    border: none;
+    border-radius: 6px;
+    padding: 0 13px;
+    color: white;
+    background: #3b82f6;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.add-button:hover {
+    background: #2563eb;
+}
+
+/* 4. Tip and filters */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 14px 0 8px;
+}
+
+.tip {
+    margin: 0;
+    color: #778296;
+    font-size: 10px;
+}
+
+.filters {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.filter-button {
+    border: 1px solid transparent;
+    background: transparent;
+    color: #647084;
+    border-radius: 6px;
+    padding: 6px 9px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.filter-button.selected {
+    color: #2672ee;
+    background: #eaf2ff;
+    border-color: #d7e7ff;
+}
+
+/* 5. Todo rows */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #edf0f4;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 40px;
+    padding: 6px 12px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.todo-checkbox {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: #ac91ce;
+    cursor: pointer;
+}
+
+.todo-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 12px;
+    cursor: text;
+}
+
+.todo-item.completed .todo-text {
+    color: #9199a8;
+    text-decoration: line-through;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 0;
+    height: 28px;
+    padding: 3px 7px;
+    border: 1px solid #3b82f6;
+    border-radius: 5px;
+    outline: none;
+    font-size: 12px;
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: #9aa2af;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background: #f3f4f6;
+    color: #ef4444;
+}
+
+.empty-message {
+    margin: 0;
+    padding: 15px 12px;
+    color: #909aad;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Ensure the HTML hidden attribute really hides the message. */
+.empty-message[hidden] {
+    display: none;
+}
+
+/* 6. Footer */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 11px;
+    color: #778296;
+    font-size: 11px;
+}
+
+.footer-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.secondary-button {
+    border: 1px solid #c3c9d3;
+    border-radius: 3px;
+    background: #f9fafb;
+    color: #687386;
+    padding: 3px 7px;
+    font-size: 10px;
+}
+
+.secondary-button:hover {
+    background: #edf2f8;
+}
+
+/* A visually hidden but accessible label for the input. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 7. Small screens */
+@media (max-width: 480px) {
+    .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

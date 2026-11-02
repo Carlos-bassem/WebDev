@@ -1,0 +1,214 @@
+/* Simple styling only — all application behavior is in the React code. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f7f7fa;
+    color: #1b2232;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: 48px auto;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #7b8293;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: 34px;
+}
+
+.page-header p {
+    color: #657086;
+    line-height: 1.5;
+}
+
+.panel,
+.movie-card,
+.empty-state {
+    background: white;
+    border: 1px solid #e5e7ee;
+    border-radius: 14px;
+}
+
+.panel {
+    padding: 26px;
+    box-shadow: 0 5px 22px rgba(0, 0, 0, 0.04);
+}
+
+h2 {
+    margin: 0 0 22px;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    margin: 18px 0 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8dce5;
+    border-radius: 8px;
+    font: inherit;
+    background: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #bbc8ff;
+    border-color: #657ad6;
+}
+
+button {
+    cursor: pointer;
+    font: inherit;
+}
+
+.add-button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    background: #343d78;
+    font-weight: bold;
+}
+
+.add-button:hover {
+    background: #252d61;
+}
+
+.watchlist-section {
+    margin-top: 36px;
+}
+
+.list-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-heading h2 {
+    margin-bottom: 16px;
+}
+
+.count {
+    padding: 7px 10px;
+    border-radius: 20px;
+    background: #e9ebf8;
+    color: #343d78;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.empty-state {
+    padding: 36px 16px;
+    text-align: center;
+    color: #657086;
+}
+
+.empty-icon {
+    font-size: 36px;
+}
+
+.empty-state p {
+    margin-bottom: 5px;
+    color: #1b2232;
+    font-weight: bold;
+}
+
+.empty-state span {
+    font-size: 13px;
+}
+
+.movie-list {
+    display: grid;
+    gap: 12px;
+}
+
+.movie-card {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.movie-info {
+    min-width: 0;
+}
+
+.movie-info h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    overflow-wrap: anywhere;
+}
+
+.stars {
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.movie-info p {
+    margin: 12px 0 0;
+    color: #657086;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.remove-button {
+    padding: 9px 13px;
+    border: 1px solid #f2ccd0;
+    border-radius: 8px;
+    background: #fff5f5;
+    color: #bd3542;
+}
+
+.remove-button:hover {
+    background: #ffe8e8;
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin: 26px auto;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .movie-card {
+        flex-direction: column;
+    }
+}

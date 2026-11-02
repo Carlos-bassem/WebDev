@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Watchlist</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- React, ReactDOM, and Babel (like the lecture screenshot) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function App() {
+            const [movies, setMovies] = useState([]);
+            const [title, setTitle] = useState("");
+            const [review, setReview] = useState("");
+            const [rating, setRating] = useState("");
+
+            function addMovie() {
+                if (title.trim() === "") {
+                    return;
+                }
+
+                const newMovie = {
+                    title: title,
+                    review: review,
+                    rating: rating
+                };
+
+                setMovies([...movies, newMovie]);
+
+                setTitle("");
+                setReview("");
+                setRating("3");
+            }
+
+            function removeMovie(indexToRemove) {
+                setMovies(movies.filter((movie, index) => index !== indexToRemove));
+            }
+
+            return (
+                <main className="container">
+                    <header className="page-header">
+                        <span className="eyebrow">MY PERSONAL COLLECTION</span>
+                        <h1>🎬 Movie Watchlist</h1>
+                        <p>Save the movies you have watched, rate them, and leave a review.</p>
+                    </header>
+
+                    <section className="panel">
+                        <h2>Add a movie</h2>
+
+                        <label htmlFor="movie-title">Movie title</label>
+                        <input
+                            id="movie-title"
+                            type="text"
+                            placeholder="e.g. Interstellar"
+                            value={title}
+                            onChange={(event) => setTitle(event.target.value)}
+                        />
+
+                        <label htmlFor="movie-review">Your review</label>
+                        <textarea
+                            id="movie-review"
+                            placeholder="What did you think of the movie?"
+                            rows="3"
+                            value={review}
+                            onChange={(event) => setReview(event.target.value)}
+                        ></textarea>
+
+                        <label htmlFor="movie-rating">Your rating</label>
+                        <select
+                            id="movie-rating"
+                            value={rating}
+                            onChange={(event) => setRating(event.target.value)}
+                        >
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+
+                        <button className="add-button" onClick={addMovie}>
+                            + Add movie
+                        </button>
+                    </section>
+
+                    <section className="watchlist-section">
+                        <div className="list-heading">
+                            <h2>Watched movies</h2>
+                            <span className="count">{movies.length} movies</span>
+                        </div>
+
+                        {movies.length === 0 ? (
+                            <div className="empty-state">
+                                <div className="empty-icon">🍿</div>
+                                <p>No movies added yet.</p>
+                                <span>Your watched movies will appear here.</span>
+                            </div>
+                        ) : (
+                            <div className="movie-list">
+                                {movies.map((movie, index) => (
+                                    <div className="movie-card" key={index}>
+                                        <div className="movie-info">
+                                            <h3>{movie.title}</h3>
+                                            <div className="stars">{"⭐".repeat(movie.rating)}</div>
+                                            <p>{movie.review || "No review added."}</p>
+                                        </div>
+                                        <button
+                                            className="remove-button"
+                                            onClick={() => removeMovie(index)}
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </section>
+                </main>
+            );
+        }
+
+        // Put the App component inside <div id="root">.
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+</html>

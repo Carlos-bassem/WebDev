@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- The browser runs compiled JavaScript, NOT app.ts. -->
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main class="app-container">
+        <section class="todo-card" aria-labelledby="app-title">
+            <h1 id="app-title">Todo App</h1>
+
+            <!-- Submitting the form works with both Add and Enter. -->
+            <form id="todo-form" class="add-row">
+                <label class="sr-only" for="todo-input">New todo</label>
+                <input
+                    id="todo-input"
+                    type="text"
+                    placeholder="What needs doing?"
+                    maxlength="120"
+                    autocomplete="off"
+                >
+                <button class="add-button" type="submit">Add</button>
+            </form>
+
+            <div class="toolbar">
+                <p class="tip">Tip: double-click a todo to edit. Press Enter to save.</p>
+
+                <div class="filters" role="group" aria-label="Filter todos">
+                    <button class="filter-button selected" data-filter="all" type="button" aria-pressed="true">All</button>
+                    <button class="filter-button" data-filter="active" type="button" aria-pressed="false">Active</button>
+                    <button class="filter-button" data-filter="completed" type="button" aria-pressed="false">Completed</button>
+                </div>
+            </div>
+
+            <!-- JavaScript will create each task here. -->
+            <ul id="todo-list" class="todo-list" aria-label="Todo items"></ul>
+            <p id="empty-message" class="empty-message" hidden>No tasks to show.</p>
+
+            <footer class="footer">
+                <span id="items-left">2 items left</span>
+                <div class="footer-actions">
+                    <button id="clear-completed" class="secondary-button" type="button">Clear completed</button>
+                    <button id="clear-all" class="secondary-button" type="button">Clear all</button>
+                </div>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
